@@ -1,0 +1,7 @@
+node_modules
+google_api_crendentials.json
+firebase_credentials.json
+.env
+images
+tmp
+*.lock

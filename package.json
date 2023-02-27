@@ -1,0 +1,22 @@
+{
+  "name": "report",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "@google-cloud/local-auth": "2.1.0",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0",
+    "googleapis": "105",
+    "knex": "^2.4.2",
+    "marked": "^4.2.12",
+    "mysql2": "^3.1.2",
+    "node-telegram-bot-api": "^0.61.0",
+    "pdfmake": "^0.2.7",
+    "telebot": "^1.4.1"
+  }
+}
