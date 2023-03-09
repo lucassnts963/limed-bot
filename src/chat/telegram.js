@@ -1,5 +1,9 @@
 const TeleBot = require("telebot");
 
+const handlerCommands = require("./handlers/commandsHandler.js");
+
+const commandNotFound = require("./modules/commandNotFound.js");
+
 const productTable = require("./modules/productTable.js");
 
 const greetings = require("./modules/greetings.js");
@@ -11,13 +15,25 @@ const sales = require("./modules/sales.js");
 async function Bot() {
   const bot = new TeleBot(process.env.TOKEN);
 
-  await greetings(bot);
+  bot.on("text", async msg => {
+    const { text } = msg;
 
-  await productTable(bot);
+    const intent = handlerCommands(text);
 
-  await photo(bot);
-
-  // await sales(bot);
+    switch (intent) {
+      case "/start":
+        await greetings(bot, msg);
+        break;
+      case "table":
+        await productTable(bot, msg);
+        break;
+      case "photo":
+        await photo(bot, msg);
+        break;
+      default:
+        await commandNotFound(bot, msg);
+    }
+  });
 
   bot.start();
 }

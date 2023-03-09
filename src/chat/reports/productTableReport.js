@@ -53,7 +53,10 @@ async function sendProductTable(bot, chatId) {
         bot.sendMessage(chatId, "Ocorreu um erro ao ler o arquivo PDF.");
       } else {
         bot
-          .sendDocument(chatId, data, { fileName })
+          .sendDocument(chatId, data, {
+            fileName,
+            file_options: { encoding: "UTF-8" },
+          })
           .then(() => {
             console.log("PDF enviado com sucesso.");
             return;
