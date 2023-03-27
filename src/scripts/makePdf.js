@@ -1,8 +1,9 @@
 const PdfPrinter = require("pdfmake/src/printer");
 const fs = require("fs");
 const dayjs = require("dayjs");
+const path = require("path");
 
-async function makePdf(docDefinition) {
+async function makePdf(docDefinition, tmpDir = 'tmp') {
   try {
     const fonts = {
       Roboto: {
@@ -18,7 +19,7 @@ async function makePdf(docDefinition) {
     const today = dayjs();
 
     const filename = `${today.format("DDMMYYYYHHmmss")}.pdf`;
-    const pathFile = `tmp/${filename}`;
+    const pathFile = path.join(tmpDir, filename);
 
     let pdfDoc = printer.createPdfKitDocument(docDefinition);
     pdfDoc.pipe(fs.createWriteStream(pathFile));
@@ -31,6 +32,7 @@ async function makePdf(docDefinition) {
     });
   } catch (error) {
     console.log("Erro ao criar documento pdf!", error.message);
+    console.log(error)
   }
 }
 

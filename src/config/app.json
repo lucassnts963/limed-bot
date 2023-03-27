@@ -1,0 +1,6 @@
+{
+  "finance": {
+    "penaltyRate": 2,
+    "interestRatePerDay": 0.1628
+  }
+}

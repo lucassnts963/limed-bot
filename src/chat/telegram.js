@@ -12,6 +12,8 @@ const photo = require("./modules/photo.js");
 
 const sales = require("./modules/sales.js");
 
+const overdue = require('./modules/overdue.js')
+
 async function Bot() {
   const bot = new TeleBot(process.env.TOKEN);
 
@@ -29,6 +31,9 @@ async function Bot() {
         break;
       case "photo":
         await photo(bot, msg);
+        break;
+      case "overdue":
+        await overdue(bot, msg);
         break;
       default:
         await commandNotFound(bot, msg);

@@ -1,10 +1,8 @@
 const fs = require("fs");
 
-const tmpDir = "tmp";
-
-function handle() {
+function handle(tmpDir = 'tmp') {
   if (!fs.existsSync(tmpDir)) {
-    fs.mkdirSync("tmp");
+    fs.mkdirSync(tmpDir);
   }
 
   const files = fs
@@ -16,9 +14,9 @@ function handle() {
   }
 }
 
-function getLastFile() {
+function getLastFile(tmpDir = 'tmp') {
   if (!fs.existsSync(tmpDir)) {
-    fs.mkdirSync("tmp");
+    fs.mkdirSync(tmpDir);
   }
 
   const files = fs

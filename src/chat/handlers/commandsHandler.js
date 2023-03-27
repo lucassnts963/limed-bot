@@ -14,8 +14,12 @@ function handle(entry) {
     return "table";
   }
 
-  if (entry.match(/\foto\b/i)) {
+  if (entry.match(/\bfoto\b/i)) {
     return "photo";
+  }
+
+  if (entry.match(/\breceber\b/i)) {
+    return "overdue";
   }
 
   return "default";
